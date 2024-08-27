@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ch4forecast"
+version = "0.0.1"
+authors = [
+  { name="bh223", email="bh223@ic.ac.uk" },
+]
+description = "A package for using ConvLSTM with attention to predict methane concentration."
+readme = "README.md"
+requires-python = ">=3.7"
+license = { text = "MIT" }
+dependencies = [
+    "numpy",
+    "matplotlib",
+    "sympy",
+    "pandas",
+    "notebook",
+    "jupyterlab",
+    "scipy",
+    "scikit-learn",
+    "torch==2.3.1",
+    "torchvision==0.18.1",
+    "netcdf4",
+    "xarray",
+    "dask",
+    "rasterio",
+    "rioxarray",
+    "cdsapi",
+    "cartopy",
+    "tqdm",
+    "pytest",
+    "psutil",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["ch4forecast"]
+
+[project.scripts]
+ch4forecast = "ch4forecast.main:main"

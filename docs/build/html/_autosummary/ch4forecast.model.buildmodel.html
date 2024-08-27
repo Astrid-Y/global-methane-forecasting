@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+<html lang="python" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>&lt;no title&gt; &#8212; ch4forecast 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=c0b50fd5"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="ch4forecast.model.convLSTM.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="ch4forecast.model.attention.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <p>ch4forecast.model.buildmodel</p>
+<p id="module-ch4forecast.model.buildmodel">Author: Boyang Hu
+GitHub Username: edsml-bh223</p>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Functions of training, testing, predicting models.</p>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="ch4forecast.model.buildmodel.BasicModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ch4forecast.model.buildmodel.</span></span><span class="sig-name descname"><span class="pre">BasicModel</span></span><a class="headerlink" href="#ch4forecast.model.buildmodel.BasicModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Persistent model for methane concentration forecasting.</p>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_module</span></code>(name, module)</p></td>
+<td><p>Add a child module to the current module.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply</span></code>(fn)</p></td>
+<td><p>Apply <code class="docutils literal notranslate"><span class="pre">fn</span></code> recursively to every submodule (as returned by <code class="docutils literal notranslate"><span class="pre">.children()</span></code>) as well as self.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">bfloat16</span></code>()</p></td>
+<td><p>Casts all floating point parameters and buffers to <code class="docutils literal notranslate"><span class="pre">bfloat16</span></code> datatype.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">buffers</span></code>([recurse])</p></td>
+<td><p>Return an iterator over module buffers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">children</span></code>()</p></td>
+<td><p>Return an iterator over immediate children modules.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">compile</span></code>(*args, **kwargs)</p></td>
+<td><p>Compile this Module's forward using <code class="xref py py-func docutils literal notranslate"><span class="pre">torch.compile()</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cpu</span></code>()</p></td>
+<td><p>Move all model parameters and buffers to the CPU.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cuda</span></code>([device])</p></td>
+<td><p>Move all model parameters and buffers to the GPU.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">double</span></code>()</p></td>
+<td><p>Casts all floating point parameters and buffers to <code class="docutils literal notranslate"><span class="pre">double</span></code> datatype.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">eval</span></code>()</p></td>
+<td><p>Set the module in evaluation mode.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">extra_repr</span></code>()</p></td>
+<td><p>Set the extra representation of the module.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>()</p></td>
+<td><p>Casts all floating point parameters and buffers to <code class="docutils literal notranslate"><span class="pre">float</span></code> datatype.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../ch4forecast.model.html#ch4forecast.model.buildmodel.BasicModel.forward" title="ch4forecast.model.buildmodel.BasicModel.forward"><code class="xref py py-obj docutils literal notranslate"><span class="pre">forward</span></code></a>(x)</p></td>
+<td><p>Forward pass of the model.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_buffer</span></code>(target)</p></td>
+<td><p>Return the buffer given by <code class="docutils literal notranslate"><span class="pre">target</span></code> if it exists, otherwise throw an error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_extra_state</span></code>()</p></td>
+<td><p>Return any extra state to include in the module's state_dict.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_parameter</span></code>(target)</p></td>
+<td><p>Return the parameter given by <code class="docutils literal notranslate"><span class="pre">target</span></code> if it exists, otherwise throw an error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_submodule</span></code>(target)</p></td>
+<td><p>Return the submodule given by <code class="docutils literal notranslate"><span class="pre">target</span></code> if it exists, otherwise throw an error.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">half</span></code>()</p></td>
+<td><p>Casts all floating point parameters and buffers to <code class="docutils literal notranslate"><span class="pre">half</span></code> datatype.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ipu</span></code>([device])</p></td>
+<td><p>Move all model parameters and buffers to the IPU.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_state_dict</span></code>(state_dict[, strict, assign])</p></td>
+<td><p>Copy parameters and buffers from <code class="xref py py-attr docutils literal notranslate"><span class="pre">state_dict</span></code> into this module and its descendants.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">modules</span></code>()</p></td>
+<td><p>Return an iterator over all modules in the network.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">named_buffers</span></code>([prefix, recurse, ...])</p></td>
+<td><p>Return an iterator over module buffers, yielding both the name of the buffer as well as the buffer itself.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">named_children</span></code>()</p></td>
+<td><p>Return an iterator over immediate children modules, yielding both the name of the module as well as the module itself.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">named_modules</span></code>([memo, prefix, remove_duplicate])</p></td>
+<td><p>Return an iterator over all modules in the network, yielding both the name of the module as well as the module itself.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">named_parameters</span></code>([prefix, recurse, ...])</p></td>
+<td><p>Return an iterator over module parameters, yielding both the name of the parameter as well as the parameter itself.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parameters</span></code>([recurse])</p></td>
+<td><p>Return an iterator over module parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_backward_hook</span></code>(hook)</p></td>
+<td><p>Register a backward hook on the module.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_buffer</span></code>(name, tensor[, persistent])</p></td>
+<td><p>Add a buffer to the module.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_forward_hook</span></code>(hook, *[, prepend, ...])</p></td>
+<td><p>Register a forward hook on the module.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_forward_pre_hook</span></code>(hook, *[, ...])</p></td>
+<td><p>Register a forward pre-hook on the module.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_full_backward_hook</span></code>(hook[, prepend])</p></td>
+<td><p>Register a backward hook on the module.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_full_backward_pre_hook</span></code>(hook[, prepend])</p></td>
+<td><p>Register a backward pre-hook on the module.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_load_state_dict_post_hook</span></code>(hook)</p></td>
+<td><p>Register a post hook to be run after module's <code class="docutils literal notranslate"><span class="pre">load_state_dict</span></code> is called.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_module</span></code>(name, module)</p></td>
+<td><p>Alias for <code class="xref py py-func docutils literal notranslate"><span class="pre">add_module()</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_parameter</span></code>(name, param)</p></td>
+<td><p>Add a parameter to the module.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_state_dict_pre_hook</span></code>(hook)</p></td>
+<td><p>Register a pre-hook for the <code class="xref py py-meth docutils literal notranslate"><span class="pre">state_dict()</span></code> method.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">requires_grad_</span></code>([requires_grad])</p></td>
+<td><p>Change if autograd should record operations on parameters in this module.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_extra_state</span></code>(state)</p></td>
+<td><p>Set extra state contained in the loaded <cite>state_dict</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">share_memory</span></code>()</p></td>
+<td><p>See <code class="xref py py-meth docutils literal notranslate"><span class="pre">torch.Tensor.share_memory_()</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">state_dict</span></code>(*args[, destination, prefix, ...])</p></td>
+<td><p>Return a dictionary containing references to the whole state of the module.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to</span></code>(*args, **kwargs)</p></td>
+<td><p>Move and/or cast the parameters and buffers.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_empty</span></code>(*, device[, recurse])</p></td>
+<td><p>Move the parameters and buffers to the specified device without copying storage.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">train</span></code>([mode])</p></td>
+<td><p>Set the module in training mode.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code>(dst_type)</p></td>
+<td><p>Casts all parameters and buffers to <code class="xref py py-attr docutils literal notranslate"><span class="pre">dst_type</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">xpu</span></code>([device])</p></td>
+<td><p>Move all model parameters and buffers to the XPU.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">zero_grad</span></code>([set_to_none])</p></td>
+<td><p>Reset gradients of all model parameters.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>__call__</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ch4forecast.model.buildmodel.BasicModel.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ch4forecast.model.buildmodel.BasicModel.forward" title="Link to this definition">¶</a></dt>
+<dd><p>Forward pass of the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>torch.Tensor</em>) -- Input tensor of shape [B, t, C, H, W].</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Output tensor of shape [B, t, 1, H, W],
+where the last time step is repeated for all future time steps.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ch4forecast.model.buildmodel.BuildModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ch4forecast.model.buildmodel.</span></span><span class="sig-name descname"><span class="pre">BuildModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ch4forecast.model.buildmodel.BuildModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class to build and configure different forecasting models based on provided arguments.</p>
+<p>This class initializes various forecasting models such as TALSTMNet and CALSTMNet, provides functions for training, testing, predicting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> (<em>Namespace</em>) -- <p>Arguments for model configuration, including:
+- model (str): The type of model to build:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>'ConvLSTM': model without any attention</p></li>
+<li><p>'CALSTM': model with channel attention</p></li>
+<li><p>'SALSTM': model with spatial attention</p></li>
+<li><p>'CSLSTM': model with both spatial and channel attention (CBAM)</p></li>
+<li><p>'TALSTM': model with temporal attention</p></li>
+<li><p>'CSTALSTM': model with both CBAM and temporal attention</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>name (str): name of files to be saved.</p></li>
+<li><p>input_dim (int): The number of input channels.</p></li>
+<li><p>hidden_dim (list of int): The number of hidden units for each layer.</p></li>
+<li><p>kernel_size (list of tuple): The kernel sizes for each layer.</p></li>
+<li><p>num_layers (int): The number of layers in the model.</p></li>
+<li><p>output_dim (int): The number of output channels.</p></li>
+<li><p>device (str): The device to use ('cpu' or 'cuda').</p></li>
+<li><p>pretrained (str): Path to a pre-trained model state dictionary (optional).</p></li>
+<li><p>val_rio (float): Ratio for splitting the dataset into training and validation sets (if applicable).</p></li>
+<li><p>batch_size (int): The batch size for data loading.</p></li>
+<li><p>num_workers (int): Number of workers for data loading.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ch4forecast.model.buildmodel.BuildModel.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#ch4forecast.model.buildmodel.BuildModel.model" title="Link to this definition">¶</a></dt>
+<dd><p>The initialized model based on the specified type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nn.Module</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ch4forecast.model.buildmodel.BuildModel.device">
+<span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#ch4forecast.model.buildmodel.BuildModel.device" title="Link to this definition">¶</a></dt>
+<dd><p>The device on which the model will be placed ('cpu' or 'cuda').</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.device or str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ch4forecast.model.buildmodel.BuildModel.gradscaler">
+<span class="sig-name descname"><span class="pre">gradscaler</span></span><a class="headerlink" href="#ch4forecast.model.buildmodel.BuildModel.gradscaler" title="Link to this definition">¶</a></dt>
+<dd><p>The gradient scaler used for mixed precision training.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>GradScaler</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ch4forecast.model.buildmodel.BuildModel.evalkeys">
+<span class="sig-name descname"><span class="pre">evalkeys</span></span><a class="headerlink" href="#ch4forecast.model.buildmodel.BuildModel.evalkeys" title="Link to this definition">¶</a></dt>
+<dd><p>Keys for evaluation metrics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../ch4forecast.model.html#ch4forecast.model.buildmodel.BuildModel.compute_resource" title="ch4forecast.model.buildmodel.BuildModel.compute_resource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_resource</span></code></a>(data)</p></td>
+<td><p>Compute and print resource usage for the model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../ch4forecast.model.html#ch4forecast.model.buildmodel.BuildModel.predict" title="ch4forecast.model.buildmodel.BuildModel.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a>(data, timeindex, days)</p></td>
+<td><p>Generate predictions for a specified number of days starting from given time indices.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../ch4forecast.model.html#ch4forecast.model.buildmodel.BuildModel.test_roll" title="ch4forecast.model.buildmodel.BuildModel.test_roll"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_roll</span></code></a>(data)</p></td>
+<td><p>Evaluate the model's performance by rolling predictions over multiple days.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../ch4forecast.model.html#ch4forecast.model.buildmodel.BuildModel.train" title="ch4forecast.model.buildmodel.BuildModel.train"><code class="xref py py-obj docutils literal notranslate"><span class="pre">train</span></code></a>(trainloader, valloader)</p></td>
+<td><p>Train the model over multiple epochs and validate.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../ch4forecast.model.html#ch4forecast.model.buildmodel.BuildModel.train_epoch" title="ch4forecast.model.buildmodel.BuildModel.train_epoch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">train_epoch</span></code></a>(data, optimizer, criterion)</p></td>
+<td><p>Perform a single training epoch.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../ch4forecast.model.html#ch4forecast.model.buildmodel.BuildModel.validate_epoch" title="ch4forecast.model.buildmodel.BuildModel.validate_epoch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_epoch</span></code></a>(data, criterion)</p></td>
+<td><p>Perform a single validation epoch.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ch4forecast.model.buildmodel.BuildModel.compute_resource">
+<span class="sig-name descname"><span class="pre">compute_resource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ch4forecast.model.buildmodel.BuildModel.compute_resource" title="Link to this definition">¶</a></dt>
+<dd><p>Compute and print resource usage for the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>tuple</em>) -- A tuple containing input and target tensors used for computing resource usage.</p></li>
+<li><p><strong>Prints</strong></p></li>
+<li><p><strong>-------</strong></p></li>
+<li><p><strong>RAM</strong><strong>)</strong><strong>.</strong> (<em>Trainable parameters count and memory usage</em><em> (</em><em>CUDA and</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="rc534473cf07d-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://chatgpt.com/share/6059226b-612e-4d55-8c69-e94c7159c488">https://chatgpt.com/share/6059226b-612e-4d55-8c69-e94c7159c488</a></p>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ch4forecast.model.buildmodel.BuildModel.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeindex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ch4forecast.model.buildmodel.BuildModel.predict" title="Link to this definition">¶</a></dt>
+<dd><p>Generate predictions for a specified number of days starting from given time indices.</p>
+<p>Save the predictions. The saved path is controlled by args.output_path and args.name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>nn.utils.data.dataset</em>) -- Dataset providing input and target data for prediction.</p></li>
+<li><p><strong>timeindex</strong> (<em>int</em><em> or </em><em>list</em>) -- Number of random time indices to sample or specific list of time indices for predictions.</p></li>
+<li><p><strong>days</strong> (<em>int</em>) -- Number of days to predict.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>predictions</strong> -- Array of predicted values for the specified number of days and time indices.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ch4forecast.model.buildmodel.BuildModel.test_roll">
+<span class="sig-name descname"><span class="pre">test_roll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ch4forecast.model.buildmodel.BuildModel.test_roll" title="Link to this definition">¶</a></dt>
+<dd><p>Evaluate the model's performance by rolling predictions over multiple days.</p>
+<p>Save the test results. The saved path is controlled by args.output_path and args.name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>nn.utils.data.dataset</em>) -- Dataset providing input and target data for testing.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>err</strong> -- Array of evaluation metrics averaged over all test samples and days.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ch4forecast.model.buildmodel.BuildModel.train">
+<span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trainloader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valloader</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ch4forecast.model.buildmodel.BuildModel.train" title="Link to this definition">¶</a></dt>
+<dd><p>Train the model over multiple epochs and validate.</p>
+<p>Save the training logs and model checkpoints. The saved path is controlled by args.output_path and args.name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>trainloader</strong> (<em>DataLoader</em>) -- DataLoader providing batches of input and target data for training.</p></li>
+<li><p><strong>valloader</strong> (<em>DataLoader</em>) -- DataLoader providing batches of input and target data for validation.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ch4forecast.model.buildmodel.BuildModel.train_epoch">
+<span class="sig-name descname"><span class="pre">train_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ch4forecast.model.buildmodel.BuildModel.train_epoch" title="Link to this definition">¶</a></dt>
+<dd><p>Perform a single training epoch.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>DataLoader</em>) -- DataLoader providing batches of input and target data for training.</p></li>
+<li><p><strong>optimizer</strong> (<em>torch.optim.Optimizer</em>) -- Optimizer used for updating model parameters.</p></li>
+<li><p><strong>criterion</strong> (<em>nn.Module</em>) -- Loss function used to compute the training loss.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>train_loss</strong> (<em>float</em>) -- Average training loss for the epoch.</p></li>
+<li><p><strong>train_err</strong> (<em>np.ndarray</em>) -- Array of evaluation metrics (mae, mse, rmse, mape, r2) for the training data.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ch4forecast.model.buildmodel.BuildModel.validate_epoch">
+<span class="sig-name descname"><span class="pre">validate_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ch4forecast.model.buildmodel.BuildModel.validate_epoch" title="Link to this definition">¶</a></dt>
+<dd><p>Perform a single validation epoch.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>DataLoader</em>) -- DataLoader providing batches of input and target data for validation.</p></li>
+<li><p><strong>criterion</strong> (<em>nn.Module</em>) -- Loss function used to compute the validation loss.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>val_loss</strong> (<em>float</em>) -- Average validation loss for the epoch.</p></li>
+<li><p><strong>val_err</strong> (<em>np.ndarray</em>) -- Array of evaluation metrics (mae, mse, rmse, mape, r2) for the validation data.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ch4forecast.model.buildmodel.error_metrics">
+<span class="sig-prename descclassname"><span class="pre">ch4forecast.model.buildmodel.</span></span><span class="sig-name descname"><span class="pre">error_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ch4forecast.model.buildmodel.error_metrics" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate error metrics for model evaluation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_true</strong> (<em>array-like</em>) -- The ground truth target values.</p></li>
+<li><p><strong>y_pred</strong> (<em>array-like</em>) -- The predicted values by the model.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An array containing the following metrics:
+- Mean Absolute Error (MAE)
+- Mean Squared Error (MSE)
+- Root Mean Squared Error (RMSE)
+- Mean Absolute Percentage Error (MAPE)
+- R-squared (R2) Score</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ch4forecast.model.buildmodel.set_seed">
+<span class="sig-prename descclassname"><span class="pre">ch4forecast.model.buildmodel.</span></span><span class="sig-name descname"><span class="pre">set_seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ch4forecast.model.buildmodel.set_seed" title="Link to this definition">¶</a></dt>
+<dd><p>Use this to set ALL the random seeds to a fixed value and take out any randomness from cuda kernels</p>
+</dd></dl>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ch4forecast</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ch4forecast.main.html"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch4forecast.main.html#ch4forecast.main.parse_args"><code class="docutils literal notranslate"><span class="pre">parse_args()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch4forecast.main.html#ch4forecast.main.parse_tuple"><code class="docutils literal notranslate"><span class="pre">parse_tuple()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch4forecast.model.attention.html"><code class="docutils literal notranslate"><span class="pre">CBAM</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch4forecast.model.attention.html#ch4forecast.model.attention.ChannelAttention"><code class="docutils literal notranslate"><span class="pre">ChannelAttention</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch4forecast.model.attention.html#ch4forecast.model.attention.SpatialAttention"><code class="docutils literal notranslate"><span class="pre">SpatialAttention</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch4forecast.model.attention.html#ch4forecast.model.attention.TemporalAttention"><code class="docutils literal notranslate"><span class="pre">TemporalAttention</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">BasicModel</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ch4forecast.model.buildmodel.BasicModel.forward"><code class="docutils literal notranslate"><span class="pre">BasicModel.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#ch4forecast.model.buildmodel.BuildModel"><code class="docutils literal notranslate"><span class="pre">BuildModel</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ch4forecast.model.buildmodel.BuildModel.model"><code class="docutils literal notranslate"><span class="pre">BuildModel.model</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ch4forecast.model.buildmodel.BuildModel.device"><code class="docutils literal notranslate"><span class="pre">BuildModel.device</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ch4forecast.model.buildmodel.BuildModel.gradscaler"><code class="docutils literal notranslate"><span class="pre">BuildModel.gradscaler</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ch4forecast.model.buildmodel.BuildModel.evalkeys"><code class="docutils literal notranslate"><span class="pre">BuildModel.evalkeys</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ch4forecast.model.buildmodel.BuildModel.compute_resource"><code class="docutils literal notranslate"><span class="pre">BuildModel.compute_resource()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ch4forecast.model.buildmodel.BuildModel.predict"><code class="docutils literal notranslate"><span class="pre">BuildModel.predict()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ch4forecast.model.buildmodel.BuildModel.test_roll"><code class="docutils literal notranslate"><span class="pre">BuildModel.test_roll()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ch4forecast.model.buildmodel.BuildModel.train"><code class="docutils literal notranslate"><span class="pre">BuildModel.train()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ch4forecast.model.buildmodel.BuildModel.train_epoch"><code class="docutils literal notranslate"><span class="pre">BuildModel.train_epoch()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ch4forecast.model.buildmodel.BuildModel.validate_epoch"><code class="docutils literal notranslate"><span class="pre">BuildModel.validate_epoch()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#ch4forecast.model.buildmodel.error_metrics"><code class="docutils literal notranslate"><span class="pre">error_metrics()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#ch4forecast.model.buildmodel.set_seed"><code class="docutils literal notranslate"><span class="pre">set_seed()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch4forecast.model.convLSTM.html"><code class="docutils literal notranslate"><span class="pre">CALSTMNet</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch4forecast.model.convLSTM.html#ch4forecast.model.convLSTM.ConvLSTM"><code class="docutils literal notranslate"><span class="pre">ConvLSTM</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch4forecast.model.convLSTM.html#ch4forecast.model.convLSTM.ConvLSTMCell"><code class="docutils literal notranslate"><span class="pre">ConvLSTMCell</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch4forecast.model.convLSTM.html#ch4forecast.model.convLSTM.TALSTMNet"><code class="docutils literal notranslate"><span class="pre">TALSTMNet</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch4forecast.utils.dataloader.html"><code class="docutils literal notranslate"><span class="pre">MethaneDataset</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch4forecast.utils.dataloader.html#ch4forecast.utils.dataloader.load_test_data"><code class="docutils literal notranslate"><span class="pre">load_test_data()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch4forecast.utils.dataloader.html#ch4forecast.utils.dataloader.load_train_data"><code class="docutils literal notranslate"><span class="pre">load_train_data()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch4forecast.utils.dataloader.html#ch4forecast.utils.dataloader.split_dataset"><code class="docutils literal notranslate"><span class="pre">split_dataset()</span></code></a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="ch4forecast.model.attention.html" title="previous chapter">&lt;no title&gt;</a></li>
+      <li>Next: <a href="ch4forecast.model.convLSTM.html" title="next chapter">&lt;no title&gt;</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, bh223.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/_autosummary/ch4forecast.model.buildmodel.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

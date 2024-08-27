@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html lang="python" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ch4forecast package &#8212; ch4forecast 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=c0b50fd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="ch4forecast-package">
+<h1>ch4forecast package<a class="headerlink" href="#ch4forecast-package" title="Link to this heading">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ch4forecast.model.html">ch4forecast.model package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch4forecast.model.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch4forecast.model.html#module-ch4forecast.model.attention">ch4forecast.model.attention module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.attention.CBAM"><code class="docutils literal notranslate"><span class="pre">CBAM</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.attention.CBAM.channel_attn"><code class="docutils literal notranslate"><span class="pre">CBAM.channel_attn</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.attention.CBAM.spatial_attn"><code class="docutils literal notranslate"><span class="pre">CBAM.spatial_attn</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.attention.CBAM.forward"><code class="docutils literal notranslate"><span class="pre">CBAM.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.attention.ChannelAttention"><code class="docutils literal notranslate"><span class="pre">ChannelAttention</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.attention.ChannelAttention.mlp"><code class="docutils literal notranslate"><span class="pre">ChannelAttention.mlp</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.attention.ChannelAttention.forward"><code class="docutils literal notranslate"><span class="pre">ChannelAttention.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.attention.SpatialAttention"><code class="docutils literal notranslate"><span class="pre">SpatialAttention</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.attention.SpatialAttention.conv1"><code class="docutils literal notranslate"><span class="pre">SpatialAttention.conv1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.attention.SpatialAttention.activate"><code class="docutils literal notranslate"><span class="pre">SpatialAttention.activate</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.attention.SpatialAttention.forward"><code class="docutils literal notranslate"><span class="pre">SpatialAttention.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.attention.TemporalAttention"><code class="docutils literal notranslate"><span class="pre">TemporalAttention</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.attention.TemporalAttention.query"><code class="docutils literal notranslate"><span class="pre">TemporalAttention.query</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.attention.TemporalAttention.key"><code class="docutils literal notranslate"><span class="pre">TemporalAttention.key</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.attention.TemporalAttention.value"><code class="docutils literal notranslate"><span class="pre">TemporalAttention.value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.attention.TemporalAttention.softmax"><code class="docutils literal notranslate"><span class="pre">TemporalAttention.softmax</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.attention.TemporalAttention.forward"><code class="docutils literal notranslate"><span class="pre">TemporalAttention.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ch4forecast.model.html#module-ch4forecast.model.buildmodel">ch4forecast.model.buildmodel module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.buildmodel.BasicModel"><code class="docutils literal notranslate"><span class="pre">BasicModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.buildmodel.BasicModel.forward"><code class="docutils literal notranslate"><span class="pre">BasicModel.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.buildmodel.BuildModel"><code class="docutils literal notranslate"><span class="pre">BuildModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.buildmodel.BuildModel.model"><code class="docutils literal notranslate"><span class="pre">BuildModel.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.buildmodel.BuildModel.device"><code class="docutils literal notranslate"><span class="pre">BuildModel.device</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.buildmodel.BuildModel.gradscaler"><code class="docutils literal notranslate"><span class="pre">BuildModel.gradscaler</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.buildmodel.BuildModel.evalkeys"><code class="docutils literal notranslate"><span class="pre">BuildModel.evalkeys</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.buildmodel.BuildModel.compute_resource"><code class="docutils literal notranslate"><span class="pre">BuildModel.compute_resource()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.buildmodel.BuildModel.predict"><code class="docutils literal notranslate"><span class="pre">BuildModel.predict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.buildmodel.BuildModel.test_roll"><code class="docutils literal notranslate"><span class="pre">BuildModel.test_roll()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.buildmodel.BuildModel.train"><code class="docutils literal notranslate"><span class="pre">BuildModel.train()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.buildmodel.BuildModel.train_epoch"><code class="docutils literal notranslate"><span class="pre">BuildModel.train_epoch()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.buildmodel.BuildModel.validate_epoch"><code class="docutils literal notranslate"><span class="pre">BuildModel.validate_epoch()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.buildmodel.error_metrics"><code class="docutils literal notranslate"><span class="pre">error_metrics()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.buildmodel.set_seed"><code class="docutils literal notranslate"><span class="pre">set_seed()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ch4forecast.model.html#module-ch4forecast.model.convLSTM">ch4forecast.model.convLSTM module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.CALSTMNet"><code class="docutils literal notranslate"><span class="pre">CALSTMNet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.CALSTMNet.lstm"><code class="docutils literal notranslate"><span class="pre">CALSTMNet.lstm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.CALSTMNet.conv"><code class="docutils literal notranslate"><span class="pre">CALSTMNet.conv</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.CALSTMNet.forward"><code class="docutils literal notranslate"><span class="pre">CALSTMNet.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.ConvLSTM"><code class="docutils literal notranslate"><span class="pre">ConvLSTM</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.ConvLSTM.num_layers"><code class="docutils literal notranslate"><span class="pre">ConvLSTM.num_layers</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.ConvLSTM.batch_first"><code class="docutils literal notranslate"><span class="pre">ConvLSTM.batch_first</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.ConvLSTM.return_all_layer"><code class="docutils literal notranslate"><span class="pre">ConvLSTM.return_all_layer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.ConvLSTM.cell_list"><code class="docutils literal notranslate"><span class="pre">ConvLSTM.cell_list</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.ConvLSTM._check_consistency"><code class="docutils literal notranslate"><span class="pre">ConvLSTM._check_consistency()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.ConvLSTM._init_hidden"><code class="docutils literal notranslate"><span class="pre">ConvLSTM._init_hidden()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.ConvLSTM.forward"><code class="docutils literal notranslate"><span class="pre">ConvLSTM.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.ConvLSTMCell"><code class="docutils literal notranslate"><span class="pre">ConvLSTMCell</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.ConvLSTMCell.hidden_dim"><code class="docutils literal notranslate"><span class="pre">ConvLSTMCell.hidden_dim</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.ConvLSTMCell.conv"><code class="docutils literal notranslate"><span class="pre">ConvLSTMCell.conv</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.ConvLSTMCell.ci"><code class="docutils literal notranslate"><span class="pre">ConvLSTMCell.ci</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.ConvLSTMCell.cf"><code class="docutils literal notranslate"><span class="pre">ConvLSTMCell.cf</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.ConvLSTMCell.co"><code class="docutils literal notranslate"><span class="pre">ConvLSTMCell.co</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.ConvLSTMCell.attention"><code class="docutils literal notranslate"><span class="pre">ConvLSTMCell.attention</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.ConvLSTMCell.forward"><code class="docutils literal notranslate"><span class="pre">ConvLSTMCell.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.ConvLSTMCell.init_hidden"><code class="docutils literal notranslate"><span class="pre">ConvLSTMCell.init_hidden()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.TALSTMNet"><code class="docutils literal notranslate"><span class="pre">TALSTMNet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.TALSTMNet.lstm"><code class="docutils literal notranslate"><span class="pre">TALSTMNet.lstm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.TALSTMNet.att_layer"><code class="docutils literal notranslate"><span class="pre">TALSTMNet.att_layer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.model.html#ch4forecast.model.convLSTM.TALSTMNet.forward"><code class="docutils literal notranslate"><span class="pre">TALSTMNet.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ch4forecast.model.html#module-ch4forecast.model">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ch4forecast.utils.html">ch4forecast.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch4forecast.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch4forecast.utils.html#module-ch4forecast.utils.dataloader">ch4forecast.utils.dataloader module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ch4forecast.utils.html#ch4forecast.utils.dataloader.MethaneDataset"><code class="docutils literal notranslate"><span class="pre">MethaneDataset</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.utils.html#ch4forecast.utils.dataloader.MethaneDataset.data"><code class="docutils literal notranslate"><span class="pre">MethaneDataset.data</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.utils.html#ch4forecast.utils.dataloader.MethaneDataset.scaler"><code class="docutils literal notranslate"><span class="pre">MethaneDataset.scaler</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.utils.html#ch4forecast.utils.dataloader.MethaneDataset.seqlen"><code class="docutils literal notranslate"><span class="pre">MethaneDataset.seqlen</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.utils.html#ch4forecast.utils.dataloader.MethaneDataset.interval"><code class="docutils literal notranslate"><span class="pre">MethaneDataset.interval</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.utils.html#ch4forecast.utils.dataloader.MethaneDataset.__getitem__"><code class="docutils literal notranslate"><span class="pre">MethaneDataset.__getitem__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.utils.html#ch4forecast.utils.dataloader.MethaneDataset.__len__"><code class="docutils literal notranslate"><span class="pre">MethaneDataset.__len__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.utils.html#ch4forecast.utils.dataloader.MethaneDataset._loaddata"><code class="docutils literal notranslate"><span class="pre">MethaneDataset._loaddata()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.utils.html#ch4forecast.utils.dataloader.MethaneDataset._min_max_scale"><code class="docutils literal notranslate"><span class="pre">MethaneDataset._min_max_scale()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch4forecast.utils.html#ch4forecast.utils.dataloader.MethaneDataset.writedata"><code class="docutils literal notranslate"><span class="pre">MethaneDataset.writedata()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ch4forecast.utils.html#ch4forecast.utils.dataloader.load_test_data"><code class="docutils literal notranslate"><span class="pre">load_test_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ch4forecast.utils.html#ch4forecast.utils.dataloader.load_train_data"><code class="docutils literal notranslate"><span class="pre">load_train_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ch4forecast.utils.html#ch4forecast.utils.dataloader.split_dataset"><code class="docutils literal notranslate"><span class="pre">split_dataset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ch4forecast.utils.html#module-ch4forecast.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-ch4forecast.main">
+<span id="ch4forecast-main-module"></span><h2>ch4forecast.main module<a class="headerlink" href="#module-ch4forecast.main" title="Link to this heading">¶</a></h2>
+<p>Author: Boyang Hu
+GitHub Username: edsml-bh223</p>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Main file of the ch4forecast project.</p>
+</dd>
+</dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="ch4forecast.main.main">
+<span class="sig-prename descclassname"><span class="pre">ch4forecast.main.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ch4forecast.main.main" title="Link to this definition">¶</a></dt>
+<dd><p>The main interface function of the project.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ch4forecast.main.parse_args">
+<span class="sig-prename descclassname"><span class="pre">ch4forecast.main.</span></span><span class="sig-name descname"><span class="pre">parse_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ch4forecast.main.parse_args" title="Link to this definition">¶</a></dt>
+<dd><p>Parses command-line arguments for configuring the methane concentrations forecasting model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>An object containing the parsed command-line arguments as attributes.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>argparse.Namespace</p>
+</dd>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>--name</strong> (<em>str</em><em>, </em><em>optional</em>) -- To control the name of output files to be saved.</p></li>
+<li><p><strong>--model</strong> (<em>str</em><em>, </em><em>optional</em>) -- <dl class="simple">
+<dt>The model architecture to use. Choices are</dt><dd><ul>
+<li><p><cite>ConvLSTM</cite>: model without any attention;</p></li>
+<li><p><cite>CALSTM</cite>: model with channel attention;</p></li>
+<li><p><cite>SALSTM</cite>: model with spatial attention;</p></li>
+<li><p><cite>CSLSTM</cite>: model with both spatial and channel attention (CBAM);</p></li>
+<li><p><cite>TALSTM</cite>: model with temporal attention;</p></li>
+<li><p><cite>CSTALSTM</cite>: model with both CBAM and temporal attention.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Default is &quot;ConvLSTM&quot;.</p>
+</p></li>
+<li><p><strong>--data_path</strong> (<em>str</em><em>, </em><em>optional</em>) -- The path to the directory containing the dataset. Default is &quot;../data/resample&quot;.</p></li>
+<li><p><strong>--output_path</strong> (<em>str</em><em>, </em><em>optional</em>) -- The path to the directory where output files will be saved. Default is &quot;../output&quot;.</p></li>
+<li><p><strong>--seqlen</strong> (<em>int</em><em>, </em><em>optional</em>) -- The sequence length, representing the number of time steps used to build MethaneDataset. Default is 8.</p></li>
+<li><p><strong>--val_rio</strong> (<em>float</em><em>, </em><em>optional</em>) -- The ratio of the dataset to be used for validation. Default is 0.2.</p></li>
+<li><p><strong>--batch_size</strong> (<em>int</em><em>, </em><em>optional</em>) -- The batch size used during training. Default is 16.</p></li>
+<li><p><strong>--num_workers</strong> (<em>int</em><em>, </em><em>optional</em>) -- The number of worker threads for loading data. Default is 4.</p></li>
+<li><p><strong>--n_epoch</strong> (<em>int</em><em>, </em><em>optional</em>) -- The number of training epochs. Default is 30.</p></li>
+<li><p><strong>--num_layers</strong> (<em>int</em><em>, </em><em>optional</em>) -- The number of hidden layers in the LSTM architecture. Default is 3.</p></li>
+<li><p><strong>--hidden_dim</strong> (<em>int</em><em>, </em><em>optional</em>) -- The number of hidden dimensions in each layer of the model. Default is 64.</p></li>
+<li><p><strong>--kernel_size</strong> (<em>tuple</em><em> of </em><em>int</em><em>, </em><em>optional</em>) -- The size of the convolutional kernels. Default is (7, 7). Use a comma-separated string
+to specify, e.g., &quot;3,3&quot;.</p></li>
+<li><p><strong>--input_dim</strong> (<em>int</em><em>, </em><em>optional</em>) -- The number of input channels/features. Default is 7.</p></li>
+<li><p><strong>--output_dim</strong> (<em>int</em><em>, </em><em>optional</em>) -- The number of output channels/features. Default is 1.</p></li>
+<li><p><strong>--lr</strong> (<em>float</em><em>, </em><em>optional</em>) -- The learning rate for the optimizer. Default is 1e-3.</p></li>
+<li><p><strong>--device</strong> (<em>str</em><em>, </em><em>optional</em>) -- The device to run the model on. Choices are &quot;cuda&quot; or &quot;cpu&quot;. Default is &quot;cuda&quot;.</p></li>
+<li><p><strong>--pretrained</strong> (<em>str</em><em>, </em><em>optional</em>) -- The path to a pretrained model checkpoint. Default is None.</p></li>
+<li><p><strong>--train</strong> (<em>bool</em><em>, </em><em>optional</em>) -- If specified, the model will be trained. Default is False.</p></li>
+<li><p><strong>--test</strong> (<em>bool</em><em>, </em><em>optional</em>) -- If specified, the model will be tested. Default is False.</p></li>
+<li><p><strong>--predict</strong> (<em>bool</em><em>, </em><em>optional</em>) -- If specified, the model will make predictions. Default is False.</p></li>
+<li><p><strong>--test_days</strong> (<em>int</em><em>, </em><em>optional</em>) -- The number of days of rolling forecasting to test. Parameter is valid only when <cite>test</cite> is true. Default is 14.</p></li>
+<li><p><strong>--predict_samples</strong> (<em>int</em><em>, </em><em>optional</em>) -- The number of prediction samples to generate. Parameter is valid only when <cite>predict</cite> is true. Default is 20.</p></li>
+<li><p><strong>--predict_days</strong> (<em>int</em><em>, </em><em>optional</em>) -- The number of days ahead to predict. Parameter is valid only when <cite>predict</cite> is true. Default is 14.</p></li>
+<li><p><strong>--calculation</strong> (<em>bool</em><em>, </em><em>optional</em>) -- If specified, compute and print resource usage for the model. Default is False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ch4forecast.main.parse_tuple">
+<span class="sig-prename descclassname"><span class="pre">ch4forecast.main.</span></span><span class="sig-name descname"><span class="pre">parse_tuple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ch4forecast.main.parse_tuple" title="Link to this definition">¶</a></dt>
+<dd><p>Parses a string representing a tuple of integers and converts it into an actual tuple of integers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>arg</strong> (<em>str</em>) -- A string representing a tuple, typically provided as an argument in the format &quot;x,y&quot; or &quot;(x,y)&quot;,
+where x and y are integers.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple containing the integers extracted from the input string.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple of int</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>argparse.ArgumentTypeError</strong> -- If the input string cannot be parsed into a tuple of integers, an <cite>ArgumentTypeError</cite> is raised
+with an appropriate error message.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-ch4forecast">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ch4forecast" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">ch4forecast</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.main.html"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.main.html#ch4forecast.main.parse_args"><code class="docutils literal notranslate"><span class="pre">parse_args()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.main.html#ch4forecast.main.parse_tuple"><code class="docutils literal notranslate"><span class="pre">parse_tuple()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.attention.html"><code class="docutils literal notranslate"><span class="pre">CBAM</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.attention.html#ch4forecast.model.attention.ChannelAttention"><code class="docutils literal notranslate"><span class="pre">ChannelAttention</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.attention.html#ch4forecast.model.attention.SpatialAttention"><code class="docutils literal notranslate"><span class="pre">SpatialAttention</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.attention.html#ch4forecast.model.attention.TemporalAttention"><code class="docutils literal notranslate"><span class="pre">TemporalAttention</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.buildmodel.html"><code class="docutils literal notranslate"><span class="pre">BasicModel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.buildmodel.html#ch4forecast.model.buildmodel.BuildModel"><code class="docutils literal notranslate"><span class="pre">BuildModel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.buildmodel.html#ch4forecast.model.buildmodel.error_metrics"><code class="docutils literal notranslate"><span class="pre">error_metrics()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.buildmodel.html#ch4forecast.model.buildmodel.set_seed"><code class="docutils literal notranslate"><span class="pre">set_seed()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.convLSTM.html"><code class="docutils literal notranslate"><span class="pre">CALSTMNet</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.convLSTM.html#ch4forecast.model.convLSTM.ConvLSTM"><code class="docutils literal notranslate"><span class="pre">ConvLSTM</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.convLSTM.html#ch4forecast.model.convLSTM.ConvLSTMCell"><code class="docutils literal notranslate"><span class="pre">ConvLSTMCell</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.convLSTM.html#ch4forecast.model.convLSTM.TALSTMNet"><code class="docutils literal notranslate"><span class="pre">TALSTMNet</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.utils.dataloader.html"><code class="docutils literal notranslate"><span class="pre">MethaneDataset</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.utils.dataloader.html#ch4forecast.utils.dataloader.load_test_data"><code class="docutils literal notranslate"><span class="pre">load_test_data()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.utils.dataloader.html#ch4forecast.utils.dataloader.load_train_data"><code class="docutils literal notranslate"><span class="pre">load_train_data()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.utils.dataloader.html#ch4forecast.utils.dataloader.split_dataset"><code class="docutils literal notranslate"><span class="pre">split_dataset()</span></code></a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, bh223.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/ch4forecast.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

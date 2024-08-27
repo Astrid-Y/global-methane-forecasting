@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html lang="python" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ch4forecast.utils package &#8212; ch4forecast 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=c0b50fd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="ch4forecast-utils-package">
+<h1>ch4forecast.utils package<a class="headerlink" href="#ch4forecast-utils-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-ch4forecast.utils.dataloader">
+<span id="ch4forecast-utils-dataloader-module"></span><h2>ch4forecast.utils.dataloader module<a class="headerlink" href="#module-ch4forecast.utils.dataloader" title="Link to this heading">¶</a></h2>
+<p>Author: Boyang Hu
+GitHub Username: edsml-bh223</p>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Build the dataset to load methane data.</p>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="ch4forecast.utils.dataloader.MethaneDataset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ch4forecast.utils.dataloader.</span></span><span class="sig-name descname"><span class="pre">MethaneDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dirpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seqlen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">choice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ch4forecast.utils.dataloader.MethaneDataset" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></p>
+<p>Dataset for methane data, including emissions and meteorological variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dirpath</strong> (<em>str</em>) -- Directory path where the dataset files are stored.</p></li>
+<li><p><strong>seqlen</strong> (<em>int</em><em>, </em><em>optional</em>) -- Length of the sequence to be used for training or testing. Default is 8.</p></li>
+<li><p><strong>choice</strong> (<em>str</em><em>, </em><em>optional</em>) -- Choice of dataset split, either &quot;train&quot; or &quot;test&quot;. If None, uses all data. Default is None.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ch4forecast.utils.dataloader.MethaneDataset.data">
+<span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#ch4forecast.utils.dataloader.MethaneDataset.data" title="Link to this definition">¶</a></dt>
+<dd><p>Dataset containing meteorological data and methane column data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xarray.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ch4forecast.utils.dataloader.MethaneDataset.scaler">
+<span class="sig-name descname"><span class="pre">scaler</span></span><a class="headerlink" href="#ch4forecast.utils.dataloader.MethaneDataset.scaler" title="Link to this definition">¶</a></dt>
+<dd><p>Scaler used for normalizing the target variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>sklearn.preprocessing.MinMaxScaler</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ch4forecast.utils.dataloader.MethaneDataset.seqlen">
+<span class="sig-name descname"><span class="pre">seqlen</span></span><a class="headerlink" href="#ch4forecast.utils.dataloader.MethaneDataset.seqlen" title="Link to this definition">¶</a></dt>
+<dd><p>Length of the sequence in one time window .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ch4forecast.utils.dataloader.MethaneDataset.interval">
+<span class="sig-name descname"><span class="pre">interval</span></span><a class="headerlink" href="#ch4forecast.utils.dataloader.MethaneDataset.interval" title="Link to this definition">¶</a></dt>
+<dd><p>Interval between time windows.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ch4forecast.utils.dataloader.MethaneDataset.writedata" title="ch4forecast.utils.dataloader.MethaneDataset.writedata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writedata</span></code></a>(prediction, timeindex, outpath, name)</p></td>
+<td><p>Write the methane prediction to a NetCDF file.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ch4forecast.utils.dataloader.MethaneDataset.__getitem__">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ch4forecast.utils.dataloader.MethaneDataset.__getitem__" title="Link to this definition">¶</a></dt>
+<dd><p>Get a sample and its target from the dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>idx</strong> (<em>int</em>) -- Index of the sample to retrieve.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><dl class="simple">
+<dt>sample: np.ndarray</dt><dd><p>Feature data with shape [t, C, H, W].</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>target: np.ndarray</dt><dd><p>Target data with shape [t, 1, H, W].</p>
+</dd>
+</dl>
+</li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ch4forecast.utils.dataloader.MethaneDataset.__len__">
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ch4forecast.utils.dataloader.MethaneDataset.__len__" title="Link to this definition">¶</a></dt>
+<dd><p>Return the number of samples in the dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The number of samples.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ch4forecast.utils.dataloader.MethaneDataset._loaddata">
+<span class="sig-name descname"><span class="pre">_loaddata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dirpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ch4forecast.utils.dataloader.MethaneDataset._loaddata" title="Link to this definition">¶</a></dt>
+<dd><p>Load data from the given directory path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dirpath</strong> (<em>str</em>) -- Directory path where the dataset files are stored.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dataset containing meteorological data, emission data and methane concentration data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xarray.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ch4forecast.utils.dataloader.MethaneDataset._min_max_scale">
+<span class="sig-name descname"><span class="pre">_min_max_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ch4forecast.utils.dataloader.MethaneDataset._min_max_scale" title="Link to this definition">¶</a></dt>
+<dd><p>Scales the data in an xarray.Dataset to the range [0, 1] using MinMaxScaler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>xarray.Dataset</em>) -- The input dataset containing variables to be normalized.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>scaled_data</strong> (<em>xarray.Dataset</em>) -- The dataset with all variables scaled to the range [0, 1].</p></li>
+<li><p><strong>scalers</strong> (<em>dict</em>) -- A dictionary where keys are variable names and values are the corresponding
+MinMaxScaler objects used to scale each variable.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ch4forecast.utils.dataloader.MethaneDataset.writedata">
+<span class="sig-name descname"><span class="pre">writedata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prediction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeindex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ch4forecast.utils.dataloader.MethaneDataset.writedata" title="Link to this definition">¶</a></dt>
+<dd><p>Write the methane prediction to a NetCDF file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prediction</strong> (<em>np.ndarray</em>) -- Array of shape (timepoints, rolling_days, H, W) containing predicted data.</p></li>
+<li><p><strong>timeindex</strong> (<em>list</em><em> or </em><em>np.ndarray</em>) -- List or array of time indices corresponding to the predictions.</p></li>
+<li><p><strong>outpath</strong> (<em>str</em>) -- Path to the directory where the NetCDF file will be saved.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) -- Name for the output file.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> -- If the shape of the <cite>prediction</cite> array does not have 4 dimensions.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ch4forecast.utils.dataloader.load_test_data">
+<span class="sig-prename descclassname"><span class="pre">ch4forecast.utils.dataloader.</span></span><span class="sig-name descname"><span class="pre">load_test_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ch4forecast.utils.dataloader.load_test_data" title="Link to this definition">¶</a></dt>
+<dd><p>Load testing data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> (<em>Namespace</em>) -- Arguments containing data paths, sequence length, batch size, and number of workers.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>testloader</strong> -- DataLoader for the testing dataset.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.utils.data.DataLoader</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ch4forecast.utils.dataloader.load_train_data">
+<span class="sig-prename descclassname"><span class="pre">ch4forecast.utils.dataloader.</span></span><span class="sig-name descname"><span class="pre">load_train_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ch4forecast.utils.dataloader.load_train_data" title="Link to this definition">¶</a></dt>
+<dd><p>Load training and validation data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> (<em>Namespace</em>) -- Arguments containing data paths, sequence length, validation ratio, batch size, and number of workers.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>trainloader</strong> (<em>torch.utils.data.DataLoader</em>) -- DataLoader for the training dataset.</p></li>
+<li><p><strong>valloader</strong> (<em>torch.utils.data.DataLoader</em>) -- DataLoader for the validation dataset.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ch4forecast.utils.dataloader.split_dataset">
+<span class="sig-prename descclassname"><span class="pre">ch4forecast.utils.dataloader.</span></span><span class="sig-name descname"><span class="pre">split_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_rio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ch4forecast.utils.dataloader.split_dataset" title="Link to this definition">¶</a></dt>
+<dd><p>Split a dataset into training and testing subsets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<em>torch.utils.data.Dataset</em>) -- The dataset to be split.</p></li>
+<li><p><strong>split_rio</strong> (<em>float</em><em>, </em><em>optional</em>) -- Ratio of the dataset to be used for testing (default is 0.2). The remaining data is used for training.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>trainset</strong> (<em>torch.utils.data.Subset</em>) -- The subset of the dataset used for training.</p></li>
+<li><p><strong>testset</strong> (<em>torch.utils.data.Subset</em>) -- The subset of the dataset used for testing.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-ch4forecast.utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ch4forecast.utils" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">ch4forecast</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.main.html"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.main.html#ch4forecast.main.parse_args"><code class="docutils literal notranslate"><span class="pre">parse_args()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.main.html#ch4forecast.main.parse_tuple"><code class="docutils literal notranslate"><span class="pre">parse_tuple()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.attention.html"><code class="docutils literal notranslate"><span class="pre">CBAM</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.attention.html#ch4forecast.model.attention.ChannelAttention"><code class="docutils literal notranslate"><span class="pre">ChannelAttention</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.attention.html#ch4forecast.model.attention.SpatialAttention"><code class="docutils literal notranslate"><span class="pre">SpatialAttention</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.attention.html#ch4forecast.model.attention.TemporalAttention"><code class="docutils literal notranslate"><span class="pre">TemporalAttention</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.buildmodel.html"><code class="docutils literal notranslate"><span class="pre">BasicModel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.buildmodel.html#ch4forecast.model.buildmodel.BuildModel"><code class="docutils literal notranslate"><span class="pre">BuildModel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.buildmodel.html#ch4forecast.model.buildmodel.error_metrics"><code class="docutils literal notranslate"><span class="pre">error_metrics()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.buildmodel.html#ch4forecast.model.buildmodel.set_seed"><code class="docutils literal notranslate"><span class="pre">set_seed()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.convLSTM.html"><code class="docutils literal notranslate"><span class="pre">CALSTMNet</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.convLSTM.html#ch4forecast.model.convLSTM.ConvLSTM"><code class="docutils literal notranslate"><span class="pre">ConvLSTM</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.convLSTM.html#ch4forecast.model.convLSTM.ConvLSTMCell"><code class="docutils literal notranslate"><span class="pre">ConvLSTMCell</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.model.convLSTM.html#ch4forecast.model.convLSTM.TALSTMNet"><code class="docutils literal notranslate"><span class="pre">TALSTMNet</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.utils.dataloader.html"><code class="docutils literal notranslate"><span class="pre">MethaneDataset</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.utils.dataloader.html#ch4forecast.utils.dataloader.load_test_data"><code class="docutils literal notranslate"><span class="pre">load_test_data()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.utils.dataloader.html#ch4forecast.utils.dataloader.load_train_data"><code class="docutils literal notranslate"><span class="pre">load_train_data()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/ch4forecast.utils.dataloader.html#ch4forecast.utils.dataloader.split_dataset"><code class="docutils literal notranslate"><span class="pre">split_dataset()</span></code></a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, bh223.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/ch4forecast.utils.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
